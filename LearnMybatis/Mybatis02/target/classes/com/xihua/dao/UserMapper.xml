@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xihua.dao.UserMapper">
+    <select id="getUserList" resultType="User">
+        select * from test.user;
+    </select>
+
+    <select id="getUserByid" resultType="com.xihua.pojo.User" parameterType="int">
+        select * from test.user where id = #{id};
+    </select>
+
+    <insert id="addUser" parameterType="com.xihua.pojo.User">
+        insert into test.user (id,name,password) value (#{id},#{name},#{password})
+    </insert>
+
+    <insert id="addUserMap" parameterType="map">
+        insert into test.user (name,password) value (#{username},#{userpassword})
+    </insert>
+
+    <update id="updateUser" parameterType="com.xihua.pojo.User">
+        update test.user set id=#{id},password=#{password} where name=#{name};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from test.user where id = #{id};
+    </delete>
+</mapper>
